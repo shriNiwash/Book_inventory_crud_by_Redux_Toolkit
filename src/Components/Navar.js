@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from './Home';
+import Home from "./Home";
 import List from "./List";
 import Contact from "./Contact";
 import About from "./About";
@@ -19,7 +19,9 @@ export default class Navbars extends Component {
         <>
           <Navbar bg="light" expand="lg">
             <Container fluid>
-              <Navbar.Brand as={Link} to={"/"}>Book Inventory</Navbar.Brand>
+              <Navbar.Brand as={Link} to={"/"}>
+                Book Inventory
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="navbarScroll" />
               <Navbar.Collapse id="navbarScroll">
                 <Nav
@@ -27,10 +29,18 @@ export default class Navbars extends Component {
                   style={{ maxHeight: "100px" }}
                   navbarScroll
                 >
-                  <Nav.Link as={Link} to={"/list"}>List</Nav.Link>
-                  <Nav.Link as={Link} to={"/insert"}>Insert</Nav.Link>
-                  <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
-                  <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
+                  <Nav.Link as={Link} to={"/list"}>
+                    List
+                  </Nav.Link>
+                  <Nav.Link as={Link} to={"/insert"}>
+                    Insert
+                  </Nav.Link>
+                  <Nav.Link as={Link} to={"/about"}>
+                    About
+                  </Nav.Link>
+                  <Nav.Link as={Link} to={"/contact"}>
+                    Contact
+                  </Nav.Link>
                 </Nav>
                 <Form className="d-flex">
                   <Form.Control
@@ -46,15 +56,14 @@ export default class Navbars extends Component {
           </Navbar>
         </>
         <div>
-            <Routes>
-            <Route exact path="/" element={<Home/>}/>
-            <Route exact path="/list" element={<List/>}/>
-            <Route exact path="/insert" element={<Insert/>}/>
-            <Route exact path="/about" element={<About/>}/>
-            <Route exact path="/contact" element={<Contact/>}/>
-            <Route exact path="/update/:id" element={<Update/>}/>
-
-            </Routes>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/list" element={<List />} />
+            <Route exact path="/insert" element={<Insert />} />
+            <Route exact path="/about" element={<About />} />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route exact path="/update/:id" element={<Update />} />
+          </Routes>
         </div>
       </Router>
     );

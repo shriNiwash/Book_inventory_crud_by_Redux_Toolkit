@@ -8,10 +8,9 @@ import { insertPost } from "./counter/Counterslice";
 const Insert = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [Book,setBook] = useState({
-    name:"",
-    sold:"",
-
+  const [Book, setBook] = useState({
+    name: "",
+    sold: "",
   });
 
   function onTextFild(e) {
@@ -20,13 +19,13 @@ const Insert = () => {
       [e.target.name]: e.target.value,
     });
   }
-  
-  const onSubmit = (e)=>{
+
+  const onSubmit = (e) => {
     e.preventDefault();
     dispatch(insertPost(Book));
     alert("Your data has been saved successfully");
     navigate("/list");
-  }
+  };
   return (
     <>
       <Container>
@@ -51,8 +50,7 @@ const Insert = () => {
             />
           </Form.Group>
 
-
-          <Button variant="primary" type="submit" onClick={e=>onSubmit(e)}>
+          <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
             Submit
           </Button>
         </Form>

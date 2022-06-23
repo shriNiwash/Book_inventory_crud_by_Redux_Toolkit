@@ -1,25 +1,23 @@
 import { useEffect } from "react";
 import { Table, Container, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getPost ,deletePost} from "./counter/Counterslice";
-import { useDispatch ,useSelector} from "react-redux";
+import { getPost, deletePost } from "./counter/Counterslice";
+import { useDispatch, useSelector } from "react-redux";
 
 const List = (e) => {
   const dispatch = useDispatch();
-  const users = useSelector(state=>state.users);
+  const users = useSelector((state) => state.users);
   const datas = users.users[0];
   console.log(datas);
   useEffect(() => {
     dispatch(getPost());
   }, []);
 
-
-function handleDelete(id) {
-  dispatch(deletePost(id));
-  window.location.reload();
-  alert("Post Deleted");
-}
-
+  function handleDelete(id) {
+    dispatch(deletePost(id));
+    window.location.reload();
+    alert("Post Deleted");
+  }
 
   return (
     <Container>

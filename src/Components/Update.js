@@ -3,35 +3,28 @@ import { useEffect, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import { getPostById,updatePost} from "./counter/Counterslice";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostById, updatePost } from "./counter/Counterslice";
 
 const Update = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
-  const users = useSelector(state=>state.users);
+  const users = useSelector((state) => state.users);
   console.log(users.user);
   const datas = users.user[0];
   const [Books, setBooks] = useState({
-    name:"",
-    sold:""
+    name: "",
+    sold: "",
   });
-
-  
 
   useEffect(() => {
     dispatch(getPostById(id));
+  }, [id]);
 
-  },[id]);
-
-  useEffect(()=>{
+  useEffect(() => {
     setBooks(datas);
-
-  },[datas])
-
- 
-
+  }, [datas]);
 
   function onDataField(e) {
     setBooks({
@@ -40,20 +33,17 @@ const Update = () => {
     });
   }
 
-  
-  const onSubmit= (e)=>{
+  const onSubmit = (e) => {
     e.preventDefault();
-    const {name,sold} = Books;
-    console.log("books data"+name,sold);
-    const datass = {id,name,sold};
+    const { name, sold } = Books;
+    console.log("books data" + name, sold);
+    const datass = { id, name, sold };
     dispatch(updatePost(datass));
     console.log(Books);
-    alert("This Id's data has been updated"+id);
+    alert("This Id's data has been updated" + id);
     navigate("/list");
-  }
+  };
 
-
-  
   return (
     <>
       <Container>
@@ -79,7 +69,7 @@ const Update = () => {
               value={Books?.sold}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={e => onSubmit(e)}>
+          <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
             Submit
           </Button>
         </Form>
